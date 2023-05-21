@@ -12,13 +12,10 @@ class Solution:
         #Fast & Slow Pointers
         slow, fast = head, head.next
         
-        while fast and fast.next and slow != fast:
+        while slow != fast and fast and fast.next:
           slow = slow.next
           fast = fast.next.next
         
-        if fast == slow:
-          return True
-        
-        return False
+        return fast == slow
 
         
