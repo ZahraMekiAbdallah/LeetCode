@@ -14,18 +14,15 @@ class Solution:
       ls = ListNode(0)
       pointer = ls
       
-      while ls2 and ls1:
-        t1 = ls1.next
-        t2 = ls2.next
-        
+      while ls2 and ls1:        
         if ls1.val <= ls2.val:
           pointer.next = ls1
           pointer = pointer.next
-          ls1 = t1
+          ls1 = ls1.next
         else:
           pointer.next = ls2
           pointer = pointer.next
-          ls2 = t2          
+          ls2 = ls2.next    
       
       if ls1:
         pointer.next = ls1
