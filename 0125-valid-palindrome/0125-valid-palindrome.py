@@ -10,12 +10,11 @@ class Solution:
             r-=1
           else:
             return False
-        elif not s[l].isalnum() and s[r].isalnum():
+          
+        if not s[l].isalnum():
           l+=1
-        elif not s[r].isalnum() and s[l].isalnum():
-          r-=1
-        else:
-          l+=1
+        
+        if not s[r].isalnum():
           r-=1
           
       return True
