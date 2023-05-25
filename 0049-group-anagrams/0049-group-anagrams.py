@@ -5,9 +5,11 @@ class Solution:
       dic = defaultdict(list)
       res = []
       for i in range(len(strs)):
-        key = tuple(sorted(Counter(strs[i]).items()))
-        dic[key].append(strs[i])
-      
+        key = [0] * 26 
+        for l in strs[i]:
+          key[ord(l) - ord('a')] += 1
+        dic[tuple(key)].append(strs[i]) 
+        
       for k, v in dic.items():
         res.append(v)
         
