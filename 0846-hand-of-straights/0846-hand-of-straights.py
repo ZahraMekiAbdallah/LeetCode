@@ -10,7 +10,7 @@ class Solution:
       dic = Counter(hand)
       
       for k in sorted(dic): 
-        while dic[k] > 0:
+        while dic[k] > 0: # ** Check current valid min value **
           for i in range(k, k+groupSize): # ** for each number check is group will be consecutive **
             if dic.get(i) and dic[i] - 1 >= 0:
               dic[i] -= 1
