@@ -1,22 +1,27 @@
-from collections import Counter
 class Solution:    
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-      res = []
+      ''' Optimal solving with O(n+m) instead of O(n*m) using monotonic stack'''
       dic = {}
-      for i in range(len(nums2)):
-        dic[nums2[i]] = i
-              
       for i in range(len(nums1)):
-        found = False
-        for j in range(dic[nums1[i]]+1, len(nums2)):
-          if nums2[j] > nums1[i]:
-            found = True
-            res.append(nums2[j])
-            break
-        if not found:
-          res.append(-1)
+        dic[nums1[i]] = i
         
+      res = [-1] * len(nums1)
+      stack = []
+      
+      for i in range(len(nums2)-1, -1, -1):
+        if nums2[i] in dic.keys():
+          while stack:
+            last_el = stack.pop()
+            if last_el > nums2[i]: 
+              res[dic[nums2[i]]] = last_el
+              stack.append(last_el)
+              break
+          stack.append(nums2[i])
+        else:
+          stack.append(nums2[i])
+          
       return res
+        
         
       
         
