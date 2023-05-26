@@ -1,6 +1,5 @@
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-      ''' Left leaf DFS''' 
       q = deque([[root, 0]])
       res = 0
       while q:
