@@ -1,6 +1,25 @@
 class Solution:
+    #Traverse Inorder (Left, Root, Right)
+    
+    #Iterative     
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        # Traverse Inorder (Left, Root, Right)
+        
+        stack = []
+        while root or stack:
+          while root:
+            stack.append(root)
+            root = root.left
+            
+          root = stack.pop()
+          k -= 1
+          if k == 0:
+            return root.val
+          root = root.right
+        
+        return []
+          
+    # Recursive         
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
         def inOrderTraverse(root):
             if not root:
