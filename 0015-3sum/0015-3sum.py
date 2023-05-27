@@ -9,6 +9,8 @@ class Solution:
                 while l < r:
                     if nums[i]+nums[l]+nums[r] > 0:
                         r-=1
+                        while  i < r < len(nums)-1 and nums[r] == nums[r+1]:
+                          r-=1
                     else:
                         if nums[i]+nums[l]+nums[r] == 0:
                           res.append([nums[i],nums[l],nums[r]])
