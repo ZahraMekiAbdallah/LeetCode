@@ -9,11 +9,10 @@ class Solution:
             return inorder(root.left) + [root.val] + inorder(root.right) if root else []
         
         lst = inorder(root)
-        val = float('inf') 
+        val = lst[-1] - lst[0]
         
-        for i in range(len(lst)):
-          for j in range(i+1, len(lst)):
-            val = min(abs(lst[i] - lst[j]), val)
+        for i in range(1, len(lst)):
+            val = min(abs(lst[i] - lst[i-1]), val)
         
         return val
 
