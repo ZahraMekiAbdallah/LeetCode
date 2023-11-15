@@ -10,26 +10,24 @@ class Solution(object):
         # Edge Case 
         if n == 0:
             return
+
                 
         i, j = 0, 0
         while i < len(nums1) and j < n:
             if nums1[i] > nums2[j]:
                 nums1.pop() # remove zero
-                nums1.insert(i, nums2[j]) 
+                nums1.insert(i, nums2[j]) #swap
                 nums2[j] = 0
                 j+=1
-                i+=1
-            elif nums1[i] <= nums2[j]:
-                i+=1
+            i+=1
         
-        temp = []
-        for n in nums2:
-            if n != 0:
-                temp.append(n)
-                nums1.pop()
-                
-        if len(temp) > 0:
-            nums1.extend(temp)
+        n-=1
+        for i in range(len(nums1)-1, -1, -1):
+            if nums1[i] == 0 and nums2[n] != 0:
+                nums1[i] = nums2[n]
+                n-=1
+            else:
+                break
 
             
                 
