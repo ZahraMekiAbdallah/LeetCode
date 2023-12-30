@@ -2,8 +2,9 @@ import collections
 
 class Solution:
     def makeEqual(self, words: List[str]) -> bool:
-        for key, val in collections.Counter(''.join(words)).items():
-            if int(val / len(words)) != val / len(words):
+        # O(n.m) as n=len(words), m=values in counter
+        for val in collections.Counter(''.join(words)).values(): 
+            if val % len(words) != 0:
                 return False
             
         return True
