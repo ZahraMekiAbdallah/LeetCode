@@ -3,7 +3,6 @@ class Solution:
         
         l3 = ListNode()
         p3 = l3
-        
         remain = 0
         
         while l1 or l2 or remain > 0:
@@ -15,11 +14,8 @@ class Solution:
                 num += l2.val
                 l2 = l2.next
                 
-            temp = ListNode()
-            temp.val = num % 10
             remain = num // 10
-            
-            p3.next = temp
+            p3.next = ListNode(num % 10)
             p3 = p3.next
         
         return l3.next
