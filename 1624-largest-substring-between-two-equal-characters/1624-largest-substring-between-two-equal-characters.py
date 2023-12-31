@@ -1,13 +1,12 @@
-from collections import defaultdict 
-
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
-        dic = defaultdict(list)
+        max_len = -1   
+        dic = {}
+        
         for i in range(len(s)):
-            dic[s[i]].append(i)
-            
-        max_len = -1    
-        for k, v in dic.items():
-            max_len = max(max_len, v[-1] - v[0] - 1)
+            if s[i] in dic:
+                max_len = max(max_len, i - dic[s[i]] - 1)
+            else:
+                dic[s[i]] = i
             
         return max_len
